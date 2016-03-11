@@ -1,3 +1,9 @@
+##### 3.0.0-alpha.7 - 10 March 2016
+
+###### Other
+- Now using js-data-repo-tools
+- Now using js-data-adapter
+
 ##### 3.0.0-alpha.6 - 23 February 2016
 
 - getEndpoint now works with multiple parents
