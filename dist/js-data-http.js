@@ -164,7 +164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      DSUtils.forOwn(parents, function (parent, parentName) {
 	        var _this2 = this;
 	
-	        var item = undefined;
+	        var item = void 0;
 	        var parentKey = parent.key;
 	        var parentField = parent.field;
 	        var parentDef = resourceConfig.getResource(parentName);
@@ -223,8 +223,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function HTTP(config) {
 	      var _this = this;
 	      var start = new Date();
-	      config = copy(config);
-	      config = deepMixIn(config, _this.defaults.httpConfig);
+	
+	      // blacklist `data` as it can be large and will take a lot of time to copy
+	      var payload = config.data;
+	      config = copy(config, null, null, null, ['data']);
+	      config = deepMixIn(config, _this.defaults.httpConfig, { data: payload });
 	      if (!('verbsUseBasePath' in config)) {
 	        config.verbsUseBasePath = _this.defaults.verbsUseBasePath;
 	      }
